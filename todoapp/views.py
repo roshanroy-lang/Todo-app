@@ -19,4 +19,13 @@ def post_tasks(request):
         return Response(a.data)
     else:
         return Response(a.errors)
+@api_view(['PUT'])
+def update_tasks(request ,id):
+    a=table.objects.get(id=id)
+    b=task_serializer(a,data=request.data)
+    if b.is_valid():
+            b.save()
+            return Response(b.data)
+    return Response(b.errors)   
+        
     
