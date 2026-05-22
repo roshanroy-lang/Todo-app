@@ -27,5 +27,13 @@ def update_tasks(request ,id):
             b.save()
             return Response(b.data)
     return Response(b.errors)   
+@api_view(['PATCH'])
+def patch_tasks(request ,id):
+    a=table.objects.get(id=id)
+    b=task_serializer(a,data=request.data,partial=True)
+    if b.is_valid():
+            b.save()
+            return Response(b.data)
+    return Response(b.errors)
         
     
