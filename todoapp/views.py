@@ -35,5 +35,10 @@ def patch_tasks(request ,id):
             b.save()
             return Response(b.data)
     return Response(b.errors)
+@api_view(['DELETE'])
+def delete_tasks(request ,id):
+    a=table.objects.get(id=id)
+    a.delete()
+    return Response('Deleted')
         
     

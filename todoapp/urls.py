@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.get_tasks),
     path('create/',views.post_tasks),
     path('update/<int:id>/',views.update_tasks),
-    path('partial/<int:id>/',views.patch_tasks)
+    path('partial/<int:id>/',views.patch_tasks),
+    path('delete/<int:id>/',views.delete_tasks)
 ]
