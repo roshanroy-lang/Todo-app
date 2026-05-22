@@ -11,5 +11,12 @@ def get_tasks(request):
     a=table.objects.all()
     b=task_serializer(a,many=True)
     return Response(b.data)
-
-
+@api_view(['POST'])
+def post_tasks(request):
+    a=task_serializer(data=request.data)
+    if a.is_valid():
+        a.save()
+        return Response(a.data)
+    else:
+        return Response(a.errors)
+    
